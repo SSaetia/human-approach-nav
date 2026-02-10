@@ -1,0 +1,9 @@
+image: anna_map.pgm
+resolution: 0.02038481719657876
+origin:
+- -25.830000000000002
+- -21.474
+- 0.0
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
