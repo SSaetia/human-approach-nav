@@ -47,6 +47,13 @@ def generate_launch_description():
             default_value='true',
             description='Start RViz2'
         ),
+
+        # ---- Human replay params (pose publisher) ----
+        DeclareLaunchArgument('human_x_offset', default_value='6.0'),
+        DeclareLaunchArgument('human_y_offset', default_value='-0.5'),
+        DeclareLaunchArgument('human_yaw_noise_std', default_value='0.3'),
+        DeclareLaunchArgument('human_yaw_smoothing', default_value='0.2'),
+
     ]
 
     # ---- 1) Map server ----
@@ -94,6 +101,41 @@ def generate_launch_description():
         }.items()
     )
 
+    # ---- Human (pose replay only) ----
+    human_replay = Node(
+        package='pnavbot_sim',
+        executable='human_replay.py',
+        name='human_replay',
+        output='screen',
+        parameters=[{
+            'use_sim_time': use_sim_time,
+            'x_offset': LaunchConfiguration('human_x_offset'),
+            'y_offset': LaunchConfiguration('human_y_offset'),
+            'yaw_noise_std': LaunchConfiguration('human_yaw_noise_std'),
+            'yaw_smoothing': LaunchConfiguration('human_yaw_smoothing'),
+            # keep publishing pose in map
+            'map_frame': 'map',
+        }],
+    )
+
+    # ---- Human obstacle cloud generator (real-world-style) ----
+    human_obstacle_cloud = Node(
+        package='pnavbot_perception',
+        executable='human_obstacle_cloud.py',   # you will create this
+        name='human_obstacle_cloud',
+        output='screen',
+        parameters=[{
+            'use_sim_time': use_sim_time,
+            'input_pose_topic': '/human/pose',
+            'output_cloud_topic': '/human/obstacles',
+            'odom_frame': 'odom',
+            'ring_radius_m': 1.0,
+            'ring_points': 36,
+            'ring_z': 0.0,
+        }],
+    )
+
+
     # ---- 5) RViz ----
     rviz_node = Node(
         package='rviz2',
@@ -115,6 +157,8 @@ def generate_launch_description():
             static_map_odom,
             fake_odom,
             nav2_launch,
+            human_replay,
+            human_obstacle_cloud,
             rviz_node,
         ]
     )

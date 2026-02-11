@@ -7,7 +7,7 @@ Panels:
         - /Global Options1
         - /TF1/Frames1
         - /TF1/Tree1
-        - /Marker1
+        - /PointCloud21
       Splitter Ratio: 0.5833333134651184
     Tree Height: 616
   - Class: rviz_common/Selection
@@ -78,6 +78,8 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
+        human_koko:
+          Value: true
         map:
           Value: true
         odom:
@@ -89,6 +91,8 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
+          human_koko:
+            {}
           odom:
             base_link:
               {}
@@ -500,7 +504,7 @@ Visualization Manager:
       Enabled: true
       Name: Marker
       Namespaces:
-        {}
+        human: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -509,10 +513,44 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /human/marker
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 0; 255; 0
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.03999999910593033
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /human/obstacles
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: map
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -546,7 +584,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -1.5707999467849731
+      Angle: -1.5757999420166016
       Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -556,11 +594,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 45.74766159057617
+      Scale: 113.09954833984375
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 0
-      Y: 0
+      X: -1.0653774738311768
+      Y: -2.4798591136932373
     Saved: ~
 Window Geometry:
   Displays:

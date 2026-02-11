@@ -24,7 +24,7 @@ if(BUILD_TESTING)
 endif()
 
 install(PROGRAMS
-  scripts/human_following.py
+  scripts/human_obstacle_cloud.py
   scripts/appoarch_goal_sender.py
   scripts/approach_monitor.py
   DESTINATION lib/${PROJECT_NAME}
