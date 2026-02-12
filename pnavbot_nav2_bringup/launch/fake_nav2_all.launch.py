@@ -50,8 +50,8 @@ def generate_launch_description():
 
         # ---- Human replay params (pose publisher) ----
         DeclareLaunchArgument('human_x_offset', default_value='6.0'),
-        DeclareLaunchArgument('human_y_offset', default_value='-0.5'),
-        DeclareLaunchArgument('human_yaw_noise_std', default_value='0.3'),
+        DeclareLaunchArgument('human_y_offset', default_value='-5.5'),
+        DeclareLaunchArgument('human_yaw_noise_std', default_value='0.2'),
         DeclareLaunchArgument('human_yaw_smoothing', default_value='0.2'),
 
     ]

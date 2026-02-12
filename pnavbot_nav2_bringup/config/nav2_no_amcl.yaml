@@ -60,7 +60,7 @@ global_costmap:
           topic: /human/obstacles
           data_type: PointCloud2
           marking: true
-          clearing: false
+          clearing: true
           max_obstacle_height: 2.0
           min_obstacle_height: -0.1
           obstacle_range: 20.0
@@ -75,6 +75,9 @@ local_costmap:
   local_costmap:
     ros__parameters:
       use_sim_time: true
+      update_frequency: 10.0
+      publish_frequency: 10.0
+
       global_frame: odom
       robot_base_frame: base_link
       rolling_window: true
@@ -90,15 +93,17 @@ local_costmap:
         enabled: true
         footprint_clearing_enabled: true
         max_obstacle_height: 2.0
+        ros__parameters:
+          observation_persistence: 0.2   # seconds (try 0.2–0.8)
 
         observation_sources: "human_cloud"
         human_cloud:
           topic: "/human/obstacles"
           data_type: "PointCloud2"
           marking: true
-          clearing: false
+          clearing: true
           obstacle_range: 5.0
-          raytrace_range: 0.0
+          raytrace_range: 6.0
           expected_update_rate: 20.0
 
       inflation_layer:
