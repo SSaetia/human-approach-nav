@@ -13,7 +13,7 @@ This repository is designed for **simulation / prototype validation** when full 
 
 ---
 
-## Demo
+## Demo video
 
 ![Navigation + approaching behavior](photo/navigation_approaching_behavior.mp4)
 <video src="photo/navigation_approaching_behavior.mp4" controls="controls" style="max-width: 100%;">
