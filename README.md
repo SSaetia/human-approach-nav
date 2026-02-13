@@ -5,6 +5,7 @@ Human-aware navigation behavior for **approaching a person in a non-threatening 
 - Maintain a **safe distance (~1 m)**
 - **Slow down** when close
 - **Avoid moving behind** the human using an injected “virtual obstacle” zone
+![Concept](photo/diagram/concept.png)
 
 This repository is designed for **simulation / prototype validation** when full sensor simulation (e.g., LaserScan for AMCL) is not available yet. It uses:
 - a **human pose replay** node (or replace with a real detector),
